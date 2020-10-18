@@ -1,23 +1,139 @@
 @extends('layouts.app')
 
+@section('header')
+<style>
+    /* body { padding-top:30px; } */
+    .widget .panel-body { padding:0px; }
+    .widget .list-group { margin-bottom: 0; }
+    .widget .panel-title { display:inline }
+    .widget .label-info { float: right; }
+    .widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+    .widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+    .widget .mic-info { color: #666666;font-size: 11px; }
+    .widget .action { margin-top:5px; }
+    .widget .comment-text { font-size: 12px; }
+    .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+    a:hover{
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .select2-selection.select2-selection--multiple {
+        width: 260px;
+    }
+    #search{
+        margin-left: 100px;
+    }
+    /* CSS used here will be applied after bootstrap.css */
+</style>
+@endsection
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+    <div class="row">
+        <div class="col-md-12 p-0 mb-2">
+            <label for="">Search Question By Tag</label>
+            <div class="justify-content-between d-flex col-md-12 p-0">
+                <div class="col-md-5 p-0 d-flex">
+                   <form action="{{route('home')}}" method="GET">
+                        <select name="tags[]" id="tags" class="select2 form-control"  multiple>
+                            @foreach ($tags as $item)
+                                <option value="{{$item->id}}">{{$item->tag_name}}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-success" id="search">Search</button>
+                   </form>
                 </div>
+                <a class="btn btn-primary" href="{{route('create_question-01')}}">Ask Question</a>
+            </div>
+        </div>
+        <div class="panel panel-default widget" style="width:100%">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title"></h3>
+                <span class="label label-info"></span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    @foreach ($rooms as $item)
+                        <li class="list-group-item">    
+                            <div class="row">
+                                <div class="col-xs-2 col-md-1">
+                                    <a onclick="zoomImg('{{$item->img_url}}','{{$item->question}}','{{$item->user->name}}')" style="cursor: pointer;"><img src="storage/{{$item->img_url}}" class="img-circle img-responsive" alt="" /></div></a>
+                                <div class="col-xs-10 col-md-11">
+                                    <div>
+                                        <a href="{{route('room-01',$item->id)}}">
+                                            {{\Illuminate\Support\Str::limit($item->question, $limit = 100, $end = '...')}}
+                                        </a>
+                                        <div class="mic-info">
+                                            By: <a href="#">{{$item->user->name}}</a> on 2 Aug 2013
+                                        </div>
+                                    </div>
+                                    <div class="comment-text">
+                                        <?php $count=0; ?>
+                                        @foreach ($item->tags as $tag)
+                                            @if ($count%2==0)
+                                                <div class="badge bg-warning" style="color:black;">{{$tag->tag_name}}</div>
+                                            @else 
+                                                <div class="badge bg-success">{{$tag->tag_name}}</div>
+                                            @endif
+                                            <?php $count++; ?>
+                                        @endforeach
+                                    </div>
+                                    <div class="action">
+                                        @if (auth()->user()->is($item->user))
+                                            <a href="{{route('edit_question-03',$item->id)}}" class="btn btn-primary btn-xs" title="Edit">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                            <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                            <form id='form-delete-question' action="{{route('delete_question-05',$item->id)}}" method="POST" style="display: inline-block;">
+                                                @csrf
+                                                @method('delete')
+                                                <a class="btn btn-danger btn-xs" title="Delete" onclick="deleteConfirmation()">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
             </div>
         </div>
     </div>
 </div>
+@include('alert')
+@endsection
+
+@section('js')
+<script>
+    function deleteConfirmation(){
+        Swal.fire({
+            title: 'Are you sure Want To Delete?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('#form-delete-question').submit();
+            }
+        })
+    }
+    function zoomImg(url,question,byusername){
+        Swal.fire({
+            title: byusername,
+            text: question,
+            imageUrl: '/storage/'+url,
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Image Not Found',
+        })
+    }
+</script>
 @endsection

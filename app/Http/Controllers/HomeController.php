@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\room;
+use App\tag;
 
 class HomeController extends Controller
 {
@@ -21,8 +23,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        if($request->tags){
+            $rooms = room::whereHas('tags', function($q) use($request)
+            {
+                // $q->where('tags.id', '=', 2);
+                // dd($request->all());
+                $q->whereIn('tags.id', $request->tags);
+                // ->where('name', 'like', 'bar%');
+            })->get();
+        }else{
+            $rooms = room::all();
+        }
+        $tags = tag::all();
+        return view('home',compact('rooms','tags'));
     }
 }
