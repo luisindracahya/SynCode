@@ -23,6 +23,9 @@
     #search{
         margin-left: 100px;
     }
+    #modal_center{
+        margin-left: -220px;
+    }
     /* CSS used here will be applied after bootstrap.css */
 </style>
 @endsection
@@ -105,6 +108,43 @@
         </div>
     </div>
 </div>
+<div style="position:fixed;bottom:0;right:0;border-radius:5px;cursor:pointer;" class="bg-primary m-2 p-3" data-toggle="modal" data-target="#exampleModalCenter">
+    <span class="text-white">Feedback</span>
+    <span class="glyphicon glyphicon-envelope text-white"></span>
+</div>  
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document" id="modal_center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Feedback</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form id='form-feedback' action="{{route('home-01')}}" method="POST">
+                @csrf
+                <div class="card">
+                    <div class="card-header"></div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="feedback">Message For Us</label>
+                                <textarea name="feedback" id="feedback" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+                    <a class="btn btn-success btn-sm" id="sendFeedback">Submit</a>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
 @include('alert')
 @endsection
 
@@ -135,5 +175,32 @@
             imageAlt: 'Image Not Found',
         })
     }
+    $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
+        $(this)
+            .find("input,textarea,select")
+            .val('')
+            .end()
+            .find("input[type=checkbox], input[type=radio]")
+            .prop("checked", "")
+            .end();
+    })
+    $('#sendFeedback').on('click', function (e) {
+        if($('#feedback').val()==""){
+            Swal.fire({
+                title: 'Message Cannot Be Empty',
+                icon:'error',
+                width: 600,
+                padding: '3em',
+            })
+            return false;
+        }
+        $('#form-feedback').submit();
+    })
 </script>
 @endsection
+
+
+
+
+
+

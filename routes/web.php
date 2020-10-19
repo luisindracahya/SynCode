@@ -23,6 +23,7 @@ Auth::routes();
 
 // Home
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/sendfeedback', 'HomeController@feedback')->name('home-01');
 
 // Question
 Route::get('/create_question', 'QuestionController@createQuestionIndex')->name('create_question-01');
@@ -34,3 +35,6 @@ Route::delete('/delete_question/{room:id}', 'QuestionController@deleteQuestion')
 // Room
 Route::get('/room/{room:id}', 'RoomController@index')->name('room-01');
 Route::post('/post/{roomId}', 'RoomController@post')->name('room-02');
+
+// Feedback
+Route::get('/feedback','FeedbackController@index')->name('feedback-01');

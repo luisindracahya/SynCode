@@ -45,7 +45,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        @role('admin')
+                            <li class="nav-item"><a href="{{route('feedback-01')}}" class="nav-link">feedback</a></li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->

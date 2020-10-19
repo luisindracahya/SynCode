@@ -39,4 +39,13 @@ class HomeController extends Controller
         $tags = tag::all();
         return view('home',compact('rooms','tags'));
     }
+
+    public function feedback(Request $request)
+    {
+        auth()->user()->feedbacks()->create([
+            'message' => $request->feedback,
+        ]);
+        session()->flash('success','Feedback Successfully Send');
+        return redirect()->route('home');
+    }
 }
