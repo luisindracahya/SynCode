@@ -38,3 +38,8 @@ Route::post('/post/{roomId}', 'RoomController@post')->name('room-02');
 
 // Feedback
 Route::get('/feedback','FeedbackController@index')->name('feedback-01');
+
+// Profile
+Route::get('/profile','ProfileController@index')->name('profile-01');
+Route::get('/edit-profile','ProfileController@editProfile')->name('profile-02');
+

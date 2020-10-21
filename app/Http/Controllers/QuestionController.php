@@ -53,7 +53,7 @@ class QuestionController extends Controller
     
     public function editQuestion(room $room, Request $request)
     {
-        $tddhis->validation($request);
+        $this->validation($request);
 
         if($request->img_url){
             Storage::delete($room->img_url);

@@ -28,6 +28,7 @@
     }
     /* CSS used here will be applied after bootstrap.css */
 </style>
+<!-- jQuery Modal -->
 @endsection
 @section('content')
 <div class="container">
@@ -67,7 +68,7 @@
                                             {{\Illuminate\Support\Str::limit($item->question, $limit = 100, $end = '...')}}
                                         </a>
                                         <div class="mic-info">
-                                            By: <a href="#">{{$item->user->name}}</a> on 2 Aug 2013
+                                            By: <a style="cursor: pointer;"onclick="viewUser('{{$item->user->name}}','{{$item->user->email}}','{{$item->user->img_url}}','{{$item->user->created_at}}')">{{$item->user->name}}</a> on 2 Aug 2013
                                         </div>
                                     </div>
                                     <div class="comment-text">
@@ -150,6 +151,9 @@
 
 @section('js')
 <script>
+    $("#ex1").modal({
+        fadeDuration: 100
+    });
     function deleteConfirmation(){
         Swal.fire({
             title: 'Are you sure Want To Delete?',
@@ -170,6 +174,19 @@
             title: byusername,
             text: question,
             imageUrl: '/storage/'+url,
+            imageWidth: 400,
+            imageHeight: 200,
+            imageAlt: 'Image Not Found',
+        })
+    }
+    function viewUser(username,email,img_url,created_at){
+        if(img_url==null||img_url==""){
+            img_url="img/default.png";
+        }
+        Swal.fire({
+            title: username,
+            text: email,
+            imageUrl: '/storage/'+img_url,
             imageWidth: 400,
             imageHeight: 200,
             imageAlt: 'Image Not Found',
