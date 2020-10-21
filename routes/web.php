@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+}); 
+
+Auth::routes();
+
+// Home
+Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/sendfeedback', 'HomeController@feedback')->name('home-01');
+
+// Question
+Route::get('/create_question', 'QuestionController@createQuestionIndex')->name('create_question-01');
+Route::post('/create_question', 'QuestionController@createQuestion')->name('create_question-02');
+Route::get('/edit_question/{room:id}', 'QuestionController@editQuestionIndex')->name('edit_question-03');
+Route::patch('/edit_question/{room:id}', 'QuestionController@editQuestion')->name('edit_question-04');
+Route::delete('/delete_question/{room:id}', 'QuestionController@deleteQuestion')->name('delete_question-05');
+
+// Room
+Route::get('/room/{room:id}', 'RoomController@index')->name('room-01');
+Route::post('/post/{roomId}', 'RoomController@post')->name('room-02');
+
+// Feedback
+Route::get('/feedback','FeedbackController@index')->name('feedback-01');
