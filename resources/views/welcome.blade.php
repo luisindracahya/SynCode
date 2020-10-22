@@ -31,9 +31,7 @@
                     @endauth
                 </div>
             @endif
-                <button class="btn btn-primary btn-lg icon" onclick="sidebarOpen()">
-                    <i class="fa fa-bars"></i>
-                </button>
+
             </div>
         </nav>
 
@@ -51,7 +49,11 @@
                     </p>
                 </div>
                 <br>
-                <a href="{{ route('register') }}" class="btn btn-primary btn-lg">JOIN US</a>
+                <div class="container">
+                  <div class="center">
+                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">JOIN US</a>
+                  </div>
+                </div>
             </div>
 
             <div class="image1">

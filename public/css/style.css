@@ -4,13 +4,13 @@ html, body{
     height:100%;
     overflow-x:hidden;
     font-family: "Open Sans";
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
 }
 
 .bg{
     width:100%;
     height:100%;
-    background-color: #b8c6db;
-    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
     background-repeat: repeat;
     background-size: cover;
 }
@@ -21,9 +21,6 @@ html, body{
 }
 
 .logo a{
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
     padding: 0px 0px 0px 40px;
 }
 
@@ -71,5 +68,54 @@ html, body{
     border-radius: 50px !important;
 }
 
+@media only screen and (max-width: 600px) {
+    
+    .logo img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+        height: 30%
+
+    }
+    
 
 
+    .image1 img{
+        margin: 5%;
+        margin-top:20%;
+        position: relative;
+        width:100%;
+        height:50%
+    }
+
+    .logo img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .container { 
+        position: relative;
+    }
+      
+    .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    html, body{
+    padding:0;
+    margin:0;
+    height:100%;
+    overflow-x:hidden;
+    font-family: "Open Sans";
+    background-color: #b8c6db;
+
+}
+}
+  
