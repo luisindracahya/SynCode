@@ -74,6 +74,7 @@ class QuestionController extends Controller
     {
         Storage::delete($room->img_url);
         $room->tags()->detach();
+        $room->comments()->delete();
         $room->delete();
         session()->flash('success','Question Removed');
         return redirect()->route('home'); 
