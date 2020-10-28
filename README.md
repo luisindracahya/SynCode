@@ -1,6 +1,6 @@
 # SynCode
 
-![SynCode](https://github.com/luisindracahya/SynCode/blob/master/public/assets/LOGO.png=250x250)
+<img src="https://github.com/luisindracahya/SynCode/blob/master/public/assets/LOGO.png" alt="SynCode" width="250" height="250">
 
 #### Forum web application
 #### Targets Indonesian developer to learn and grow together as part of the community
