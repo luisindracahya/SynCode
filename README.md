@@ -31,5 +31,7 @@ Feedback
 Update Profile
 ![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/10.jpg?raw=true)
 
+Asset is downloaded from:
+https://intersog.co.il/handling/assets/uploads/2019/08/shutterstock_1225954372.jpg
 
 
