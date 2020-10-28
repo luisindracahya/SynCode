@@ -4,6 +4,9 @@
 #### Targets Indonesian developer to learn and grow together as part of the community
 #### Uses laravel, a free and open-source PHP web-based framework
 
+Logo
+![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/logo.png?raw=true)
+
 Homepage
 ![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/1.jpg?raw=true)
 
