@@ -1,11 +1,10 @@
 # SynCode
 
+![SynCode](https://github.com/luisindracahya/SynCode/blob/master/public/assets/LOGO.png=250x250)
+
 #### Forum web application
 #### Targets Indonesian developer to learn and grow together as part of the community
 #### Uses laravel, a free and open-source PHP web-based framework
-
-Logo
-![SynCode](https://github.com/luisindracahya/SynCode/blob/master/public/assets/LOGO.png?raw=true=250x250)
 
 Homepage
 ![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/1.jpg?raw=true)
