@@ -5,7 +5,7 @@
 #### Uses laravel, a free and open-source PHP web-based framework
 
 Logo
-![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/logo.png?raw=true)
+![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/LOGO.png?raw=true)
 
 Homepage
 ![alt text](https://github.com/luisindracahya/SynCode/blob/master/public/assets/1.jpg?raw=true)
