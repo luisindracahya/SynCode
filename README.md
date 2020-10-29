@@ -6,6 +6,9 @@
 #### Targets Indonesian developer to learn and grow together as part of the community
 #### Uses laravel, a free and open-source PHP web-based framework
 
+To check out how SynCode works, go to the following link:
+https://www.youtube.com/watch?v=iTRlAyiNIgs&feature=youtu.be
+
 Homepage
 ![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/1.jpg?raw=true)
 
