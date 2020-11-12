@@ -36,7 +36,7 @@ Feedback
 Update Profile
 ![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/10.jpg?raw=true)
 
-Entity Relationship Diagaram (ERD)
+Entity Relationship Diagaram (ERD)<br>
 ![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/erd.png?raw=true)
 
 Asset is downloaded from:
