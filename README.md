@@ -36,6 +36,9 @@ Feedback
 Update Profile
 ![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/10.jpg?raw=true)
 
+Entity Relationship Diagaram (ERD)
+![](https://github.com/luisindracahya/SynCode/blob/master/public/assets/erd.png?raw=true)
+
 Asset is downloaded from:
 https://intersog.co.il/handling/assets/uploads/2019/08/shutterstock_1225954372.jpg
 
